@@ -27,6 +27,34 @@ class Menu extends Component {
 			selectedDish: null,
 		};
 	}
+	
+	/**
+	 * Get the single dish with onClick event "onDishSelect"
+	 * then render the dish detials using renderDish
+	 * @param {*} dish 
+	 */
+
+	onDishSelect(dish) {
+		this.setState({
+			selectedDish: dish,
+		});
+	}
+
+	renderDish(dish) {
+		if (dish != null) {
+			return (
+				<Card>
+					<CardImg width='100%' src={dish.image} alt={dish.name} />
+					<CardBody>
+						<CardTitle>{dish.name}</CardTitle>
+						<CardText>{dish.description}</CardText>
+					</CardBody>
+				</Card>
+			);
+		} else {
+			return <div></div>;
+		}
+	}
 
 	/**
 	 * A class component of REACT I should implement a method
@@ -37,7 +65,7 @@ class Menu extends Component {
 		const menu = this.props.dishes.map((dish) => {
 			return (
 				<div key={dish.id} className='m-1 col-12 col-md-5'>
-					<Card>
+					<Card onClick={() => this.onDishSelect(dish)}>
 						<CardImg
 							width='100%'
 							src={dish.image}
@@ -54,6 +82,9 @@ class Menu extends Component {
 		return (
 			<div className='container'>
 				<div className='row'>{menu}</div>
+				<div className='row'>
+					{this.renderDish(this.state.selectedDish)}
+				</div>
 			</div>
 		);
 	}
