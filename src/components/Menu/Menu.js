@@ -58,7 +58,7 @@ class Menu extends Component {
 							alt={dish.name}
 						/>
 						<CardImgOverlay>
-							<CardTitle>{dish.name}</CardTitle>
+							<CardTitle className="text-white pt-2 pb-2 pl-3 pr-3" style={{backgroundColor:'rgba(0,0,0,0.7)',display:'inline'}}>{dish.name}</CardTitle>
 						</CardImgOverlay>
 					</Card>
 				</div>

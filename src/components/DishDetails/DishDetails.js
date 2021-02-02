@@ -26,9 +26,7 @@ class DishDetails extends Component {
 					</Card>
 				</div>
 				<div className='mt-3 mb-3 col-12 col-md-6'>
-					<Comments
-						comments={this.props.details.comments}
-					/>
+					<Comments comments={this.props.details.comments} />
 				</div>
 			</div>
 		);
