@@ -3,9 +3,6 @@ import { Card, CardImg, CardBody, CardTitle, CardText } from 'reactstrap';
 import Comments from './Comments';
 
 class DishDetails extends Component {
-	constructor(props) {
-		super(props);
-	}
 
 	render() {
 		return (
