@@ -6,9 +6,6 @@ import CardText from 'reactstrap/lib/CardText';
 import CardTitle from 'reactstrap/lib/CardTitle';
 
 class Comments extends Component {
-	constructor(props) {
-		super(props);
-	}
 
 	render() {
 		const comments = this.props.comments.map((comment) => {
