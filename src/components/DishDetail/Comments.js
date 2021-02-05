@@ -13,7 +13,7 @@ class Comments extends Component {
 				<Card key={comment.id} className='mt-3 mb-3 p-3'>
 					<CardText>{comment.comment}</CardText>
 					<CardTitle>{comment.author}</CardTitle>
-					<CardSubtitle>{comment.date}</CardSubtitle>
+					<CardSubtitle>{new Intl.DateTimeFormat('en-US', {year: 'numeric', month: 'short', day: 'numeric'}).format(new Date(Date.parse(comment.date)))}</CardSubtitle>
 					<CardSubtitle>Rating: {comment.rating}</CardSubtitle>
 				</Card>
 			);
