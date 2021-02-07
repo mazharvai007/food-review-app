@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import Home from '../Home/Home';
-import DishDetail from '../DishDetail/DishDetail';
+import DishDetail from '../DishDetail/DishDetail_back';
 import { DISHES } from '../../shared/dishes_back';
 import { COMMENTS } from '../../shared/comments';
 import { PROMOTIONS } from '../../shared/promotions';
