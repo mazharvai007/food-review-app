@@ -10,6 +10,7 @@ import Header from '../Header/Header';
 import Menu from '../Menu/Menu';
 import Contact from '../Contact/Contact';
 import Footer from '../Footer/Footer';
+import About from '../About/About';
 
 class Main extends Component {
 	constructor(props) {
@@ -42,6 +43,10 @@ class Main extends Component {
 			);
 		};
 
+		const AboutPage = () => {
+			return <About leaders={this.state.leaders} />;
+		};
+
 		const DishWithId = ({ match }) => {
 			return (
 				<DishDetail
@@ -51,7 +56,10 @@ class Main extends Component {
 								dish.id === parseInt(match.params.dishId, 10)
 						)[0]
 					}
-					comments={this.state.comments.filter((comment) => comment.id === parseInt(match.params.dishId, 10))}
+					comments={this.state.comments.filter(
+						(comment) =>
+							comment.id === parseInt(match.params.dishId, 10)
+					)}
 				/>
 			);
 		};
@@ -61,6 +69,7 @@ class Main extends Component {
 				<Header />
 				<Switch>
 					<Route path='/home' component={HomePage} />
+					<Route path='/about' component={AboutPage} />
 					<Route
 						exact
 						path='/menu'
