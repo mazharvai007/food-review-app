@@ -15,7 +15,7 @@ export default class Header extends Component {
 		super(props);
 
 		this.state = {
-			isNavOpen: false
+			isNavOpen: false,
 		};
 
 		this.toggleNav = this.toggleNav.bind(this);
@@ -23,7 +23,7 @@ export default class Header extends Component {
 
 	toggleNav() {
 		this.setState({
-			isNavOpen: !this.state.isNavOpen
+			isNavOpen: !this.state.isNavOpen,
 		});
 	}
 
