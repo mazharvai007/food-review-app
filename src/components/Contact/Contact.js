@@ -22,13 +22,18 @@ class Contact extends Component {
 			telNum: '',
 			email: '',
 			agree: false,
-			contatType: 'Tel.',
+			contactType: 'Tel.',
 			message: '',
+
+			/**
+			 * If users does not fill-up the fileds, the form is not valid
+			 */
 			touched: {
 				firstName: false,
 				lastName: false,
 				telNum: false,
 				email: false,
+				contactType: false,
 			},
 		};
 
@@ -37,6 +42,10 @@ class Contact extends Component {
 		this.handleBlur = this.handleBlur.bind(this);
 	}
 
+	/**
+	 * this method allow to write/change input boxes
+	 * @param {*} event
+	 */
 	handleInputChange(event) {
 		const target = event.target;
 		const value =
@@ -48,17 +57,35 @@ class Contact extends Component {
 		});
 	}
 
+	/**
+	 * It's working for submitting the form
+	 * @param {*} event
+	 */
 	handleSubmit(event) {
 		console.log('Current State is: ' + JSON.stringify(this.state));
 		alert('Current State is: ' + JSON.stringify(this.state));
 		event.preventDefault();
 	}
 
+	/**
+	 * It's indicate which field is modified
+	 * It also received the corresponding event
+	 * We will be able to tract which input field is modified
+	 * @param {*} field
+	 */
 	handleBlur = (field) => (event) => {
 		this.setState({
 			touched: { ...this.state.touched, [field]: true },
 		});
 	};
+
+	/**
+	 * validate the form
+	 * @param {*} firstName
+	 * @param {*} lastName
+	 * @param {*} telNum
+	 * @param {*} email
+	 */
 
 	validate(firstName, lastName, telNum, email) {
 		const errors = {
@@ -68,6 +95,9 @@ class Contact extends Component {
 			email: '',
 		};
 
+		/**
+		 * Validate First Name
+		 */
 		if (this.state.touched.firstName && firstName.length < 3) {
 			errors.firstName =
 				'First Name should be the 3 or more than 3 characters';
@@ -76,6 +106,9 @@ class Contact extends Component {
 				'First Name should be less than or equal 10 characters';
 		}
 
+		/**
+		 * Validate Last Name
+		 */
 		if (this.state.touched.lastName && lastName.length < 3) {
 			errors.lastName =
 				'Last Name should be the 3 or more than 3 characters';
@@ -84,17 +117,20 @@ class Contact extends Component {
 				'Last Name should be less than or equal 10 characters';
 		}
 
+		/**
+		 * Validate Telephone Number
+		 */
 		const regs = /^\d+$/;
+		const regsLength = /^\d{11}$/;
 		if (this.state.touched.telNum && !regs.test(telNum)) {
 			errors.telNum = 'Telephone number should contain only the number';
-		} else if (
-			this.state.touched.telNum &&
-			telNum.length < 11 &&
-			telNum.length > 11
-		) {
+		} else if (this.state.touched.telNum && !regsLength.test(telNum)) {
 			errors.telNum = 'Telephone number should be 11 characters';
 		}
 
+		/**
+		 * Validate Email
+		 */
 		if (
 			this.state.touched.email &&
 			email.split('').filter((x) => x === '@').length !== 1
@@ -299,7 +335,7 @@ class Contact extends Component {
 								href='tel:+85212345678'>
 								<i className='fa fa-phone'></i> Call
 							</a>
-							<a role='button' href className='btn btn-info'>
+							<a role='button' href='true' className='btn btn-info'>
 								<i className='fa fa-skype'></i> Skype
 							</a>
 							<a
