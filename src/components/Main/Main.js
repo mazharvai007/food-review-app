@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Home from '../Home/Home';
-import DishDetail from '../DishDetail/DishDetails';
+import DishDetail from '../DishDetail/DishDetail';
 import Header from '../Header/Header';
 import Menu from '../Menu/Menu';
 import Contact from '../Contact/Contact';
