@@ -171,7 +171,8 @@ class Contact extends Component {
 										show='touched'
 										messages={{
 											required: 'Required! ',
-											validEmail: 'Invalid Email Address.',
+											validEmail:
+												'Invalid Email Address.',
 										}}
 									/>
 								</Col>
