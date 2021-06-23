@@ -1,9 +1,20 @@
 import React from 'react';
 import { Component } from 'react';
-import Card from 'reactstrap/lib/Card';
-import CardSubtitle from 'reactstrap/lib/CardSubtitle';
-import CardText from 'reactstrap/lib/CardText';
-import CardTitle from 'reactstrap/lib/CardTitle';
+// import Card from 'reactstrap/lib/Card';
+// import CardSubtitle from 'reactstrap/lib/CardSubtitle';
+// import CardText from 'reactstrap/lib/CardText';
+// import CardTitle from 'reactstrap/lib/CardTitle';
+
+import {
+	Card,
+	// CardImg,
+	// CardBody,
+	CardTitle,
+	CardText,
+	CardSubtitle,
+	// Breadcrumb,
+	// BreadcrumbItem,
+} from 'reactstrap';
 
 class Comments extends Component {
 	render() {
