@@ -5,7 +5,7 @@ import {
 	CardBody,
 	CardTitle,
 	CardText,
-	// CardSubtitle,
+	CardSubtitle,
 	Breadcrumb,
 	BreadcrumbItem,
 } from 'reactstrap';
@@ -16,7 +16,12 @@ function RenderDish(dish) {
 	return (
 		<div className='mt-3 mb-3 col-12 col-md-6'>
 			<Card>
-				<CardImg top width='100%' src={'../' + dish.dish.image} alt={dish.dish.name} />
+				<CardImg
+					top
+					width='100%'
+					src={'../' + dish.dish.image}
+					alt={dish.dish.name}
+				/>
 				<CardBody>
 					<CardTitle>{dish.dish.name}</CardTitle>
 					<CardText>{dish.dish.description}</CardText>
@@ -26,7 +31,7 @@ function RenderDish(dish) {
 	);
 }
 
-// function RenderComments({ comments }) {
+// function RenderComments({ comments, addComment, dishId }) {
 // 	if (comments != null) {
 // 		comments.map((comment) => {
 // 			return (
@@ -43,9 +48,12 @@ function RenderDish(dish) {
 // 						</CardSubtitle>
 // 						<CardSubtitle>Rating: {comment.rating}</CardSubtitle>
 // 					</Card>
+// 					<Comments addComment={addComment} dishId={dishId} />
 // 				</div>
 // 			);
 // 		});
+// 	} else {
+// 		return <div></div>;
 // 	}
 // }
 
@@ -69,8 +77,16 @@ const DishDetail = (props) => {
 				</div>
 				<div className='row'>
 					<RenderDish dish={props.dish} />
-					{/* <RenderComments comments={props.comments} /> */}
-					<Comments comments={props.comments} />
+					{/* <RenderComments
+						comments={props.comments}
+						addComment={props.addComment}
+						dishId={props.dish.id}
+					/> */}
+					<Comments
+						comments={props.comments}
+						addComment={props.addComment}
+						dishId={props.dish.id}
+					/>
 				</div>
 			</div>
 		);
