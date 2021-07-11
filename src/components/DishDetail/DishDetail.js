@@ -5,12 +5,12 @@ import {
 	CardBody,
 	CardTitle,
 	CardText,
-	CardSubtitle,
 	Breadcrumb,
 	BreadcrumbItem,
 } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import Comments from './Comments';
+import { Loading } from '../Loading/Loading';
 
 function RenderDish(dish) {
 	return (
@@ -31,34 +31,24 @@ function RenderDish(dish) {
 	);
 }
 
-// function RenderComments({ comments, addComment, dishId }) {
-// 	if (comments != null) {
-// 		comments.map((comment) => {
-// 			return (
-// 				<div className='mt-3 mb-3 col-12 col-md-6'>
-// 					<Card key={comment.id} className='mt-3 mb-3 p-3'>
-// 						<CardText>{comment.comment}</CardText>
-// 						<CardTitle>{comment.author}</CardTitle>
-// 						<CardSubtitle>
-// 							{new Intl.DateTimeFormat('en-US', {
-// 								year: 'numeric',
-// 								month: 'short',
-// 								day: 'numeric',
-// 							}).format(new Date(Date.parse(comment.date)))}
-// 						</CardSubtitle>
-// 						<CardSubtitle>Rating: {comment.rating}</CardSubtitle>
-// 					</Card>
-// 					<Comments addComment={addComment} dishId={dishId} />
-// 				</div>
-// 			);
-// 		});
-// 	} else {
-// 		return <div></div>;
-// 	}
-// }
-
 const DishDetail = (props) => {
-	if (props.dish != null) {
+	if (props.isLoading) {
+		return (
+			<div className='container'>
+				<div className='row'>
+					<Loading />
+				</div>
+			</div>
+		);
+	} else if (props.errorMessage) {
+		return (
+			<div className='container'>
+				<div className='row'>
+					<h4>{props.errorMessage}</h4>
+				</div>
+			</div>
+		);
+	} else if (props.dish != null) {
 		return (
 			<div className='container'>
 				<div className='row'>
@@ -77,11 +67,6 @@ const DishDetail = (props) => {
 				</div>
 				<div className='row'>
 					<RenderDish dish={props.dish} />
-					{/* <RenderComments
-						comments={props.comments}
-						addComment={props.addComment}
-						dishId={props.dish.id}
-					/> */}
 					<Comments
 						comments={props.comments}
 						addComment={props.addComment}
