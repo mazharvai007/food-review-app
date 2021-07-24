@@ -9,6 +9,7 @@ import {
 } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { Loading } from '../Loading/Loading';
+import { baseURL } from '../../shared/baseURL';
 
 class Menu extends Component {
 	/**
@@ -31,7 +32,7 @@ class Menu extends Component {
 					<Link to={`/menu/${dish.id}`}>
 						<CardImg
 							width='100%'
-							src={dish.image}
+							src={baseURL + dish.image}
 							alt={dish.name}
 						/>
 						<CardImgOverlay>

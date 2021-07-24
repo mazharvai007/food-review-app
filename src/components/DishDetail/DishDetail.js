@@ -11,6 +11,7 @@ import {
 import { Link } from 'react-router-dom';
 import Comments from './Comments';
 import { Loading } from '../Loading/Loading';
+import { baseURL } from '../../shared/baseURL';
 
 function RenderDish(dish) {
 	return (
@@ -19,7 +20,7 @@ function RenderDish(dish) {
 				<CardImg
 					top
 					width='100%'
-					src={'../' + dish.dish.image}
+					src={baseURL + dish.dish.image}
 					alt={dish.dish.name}
 				/>
 				<CardBody>
