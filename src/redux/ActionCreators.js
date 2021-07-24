@@ -13,6 +13,7 @@ export const addComment = (dishId, rating, author, comment) => ({
 
 /**
  * Fetch dishes from api
+ * Error Handeling
  * @returns dishes
  */
 
@@ -20,8 +21,26 @@ export const fetchDishes = () => (dispatch) => {
 	dispatch(dishesLoading(true));
 
 	return fetch(baseURL + 'dishes')
+		.then(
+			(response) => {
+				if (response.ok) {
+					return response;
+				} else {
+					var errorStatus = new Error(
+						'Error ' + response.status + ': ' + response.statusText
+					);
+					errorStatus.response = response;
+					throw errorStatus;
+				}
+			},
+			(error) => {
+				var errorStatusMessage = new Error(error.message);
+				throw errorStatusMessage;
+			}
+		)
 		.then((response) => response.json())
-		.then((dishes) => dispatch(addDishes(dishes)));
+		.then((dishes) => dispatch(addDishes(dishes)))
+		.catch((error) => dispatch(dishesFailed(error.message)));
 };
 
 export const dishesLoading = () => ({
@@ -40,13 +59,32 @@ export const addDishes = (dishes) => ({
 
 /**
  * Fetch comments from API
+ * Error Handeling
  * @returns comments
  */
 
 export const fetchComments = () => (dispatch) => {
 	return fetch(baseURL + 'comments')
+		.then(
+			(response) => {
+				if (response.ok) {
+					return response;
+				} else {
+					var errorStatus = new Error(
+						'Error ' + response.status + ': ' + response.statusText
+					);
+					errorStatus.response = response;
+					throw errorStatus;
+				}
+			},
+			(error) => {
+				var errorStatusMessage = new Error(error.message);
+				throw errorStatusMessage;
+			}
+		)
 		.then((response) => response.json())
-		.then((comments) => dispatch(addComments(comments)));
+		.then((comments) => dispatch(addComments(comments)))
+		.catch((error) => dispatch(commentsFailed(error.message)));
 };
 
 export const commentsFailed = (errorMessage) => ({
@@ -61,6 +99,7 @@ export const addComments = (comments) => ({
 
 /**
  * Fetch promotions from API
+ * Error Handeling
  * @returns promotions
  */
 
@@ -68,8 +107,26 @@ export const fetchPromotions = () => (dispatch) => {
 	dispatch(promotionsLoading(true));
 
 	return fetch(baseURL + 'promotions')
+		.then(
+			(response) => {
+				if (response.ok) {
+					return response;
+				} else {
+					var errorStatus = new Error(
+						'Error ' + response.status + ': ' + response.statusText
+					);
+					errorStatus.response = response;
+					throw errorStatus;
+				}
+			},
+			(error) => {
+				var errorStatusMessage = new Error(error.message);
+				throw errorStatusMessage;
+			}
+		)
 		.then((response) => response.json())
-		.then((promotions) => dispatch(addPromotions(promotions)));
+		.then((promotions) => dispatch(addPromotions(promotions)))
+		.catch((error) => dispatch(promotionsFailed(error.message)));
 };
 
 export const promotionsLoading = () => ({
