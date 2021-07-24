@@ -40,7 +40,7 @@ class Comments extends Component {
 
 	handleComment(values) {
 		this.toggleModal();
-		this.props.addComment(
+		this.props.postComment(
 			this.props.dishId,
 			values.rating,
 			values.author,
