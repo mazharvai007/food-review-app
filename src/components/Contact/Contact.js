@@ -42,7 +42,7 @@ class Contact extends Component {
 						<BreadcrumbItem>
 							<Link to='/home'>Home</Link>
 						</BreadcrumbItem>
-						<BreadcrumbItem active>Conatact Us</BreadcrumbItem>
+						<BreadcrumbItem active>Contact Us</BreadcrumbItem>
 					</Breadcrumb>
 					<div className='col-12'>
 						<h3>Contact Us</h3>
