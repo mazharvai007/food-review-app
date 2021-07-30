@@ -12,22 +12,29 @@ import { Link } from 'react-router-dom';
 import Comments from './Comments';
 import { Loading } from '../Loading/Loading';
 import { baseURL } from '../../shared/baseURL';
+import { FadeTransform } from 'react-animation-components';
 
 function RenderDish(dish) {
 	return (
 		<div className='mt-3 mb-3 col-12 col-md-6'>
-			<Card>
-				<CardImg
-					top
-					width='100%'
-					src={baseURL + dish.dish.image}
-					alt={dish.dish.name}
-				/>
-				<CardBody>
-					<CardTitle>{dish.dish.name}</CardTitle>
-					<CardText>{dish.dish.description}</CardText>
-				</CardBody>
-			</Card>
+			<FadeTransform
+				in
+				transformProps={{
+					exitTransform: 'scale(0.5) translateY(-50%)',
+				}}>
+				<Card>
+					<CardImg
+						top
+						width='100%'
+						src={baseURL + dish.dish.image}
+						alt={dish.dish.name}
+					/>
+					<CardBody>
+						<CardTitle>{dish.dish.name}</CardTitle>
+						<CardText>{dish.dish.description}</CardText>
+					</CardBody>
+				</Card>
+			</FadeTransform>
 		</div>
 	);
 }
