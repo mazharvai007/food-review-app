@@ -8,52 +8,41 @@ import {
 	Media,
 } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import { Loading } from '../Loading/Loading';
+import { baseURL } from '../../shared/baseURL';
 
-const RenderLeaders = ({ leaders }) =>
+const RenderLeaders = ({ leaders, isLoading, errorMessage }) =>
 	leaders.map((leader) => {
-		return (
-			<Media key={leader.id} className='mt-5 mb-5'>
-				<Media left href='#' className='mr-3'>
-					<Media
-						object
-						data-src={leader.image}
-						src={leader.image}
-						alt={leader.name}
-						with='100'
-						height='100'
-					/>
-				</Media>
-				<Media body>
-					<Media heading>{leader.name}</Media>
-					<Media className='mb-3'>
-						{leader.designation} ({leader.abbr})
+		if (isLoading) {
+			return <Loading />;
+		} else if (errorMessage) {
+			return <h4>{errorMessage}</h4>;
+		} else {
+			return (
+				<Media key={leader.id} className='mt-5 mb-5'>
+					<Media left href='#' className='mr-3'>
+						<Media
+							object
+							data-src={baseURL + leader.image}
+							src={baseURL + leader.image}
+							alt={leader.name}
+							with='100'
+							height='100'
+						/>
 					</Media>
-					<Media>{leader.description}</Media>
+					<Media body>
+						<Media heading>{leader.name}</Media>
+						<Media className='mb-3'>
+							{leader.designation} ({leader.abbr})
+						</Media>
+						<Media>{leader.description}</Media>
+					</Media>
 				</Media>
-			</Media>
-		);
+			);
+		}
 	});
 
 const About = (props) => {
-	// const leaders = props.leaders.map((leader) => {
-	// 	return (
-	// 		<Media className='mt-5 mb-5'>
-	// 			<Media left href='#' className='mr-3'>
-	// 				<Media
-	// 					object
-	// 					data-src={leader.image}
-	// 					src={leader.image}
-	// 					alt={leader.name} with='100' height='100' />
-	// 			</Media>
-	// 			<Media body>
-	// 				<Media heading>{leader.name}</Media>
-	// 				<Media className='mb-3'>{leader.designation} ({leader.abbr})</Media>
-	// 				<Media>{leader.description}</Media>
-	// 			</Media>
-	// 		</Media>
-	// 	);
-	// });
-
 	return (
 		<div className='container'>
 			<div className='row'>

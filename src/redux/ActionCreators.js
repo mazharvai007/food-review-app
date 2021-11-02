@@ -179,3 +179,49 @@ export const addPromotions = (promotions) => ({
 	type: ActionTypes.ADD_PROMOTIONS,
 	payload: promotions,
 });
+
+/**
+ *  Fetch Leaders from API
+ * Error Handeling
+ * @returns
+ */
+
+export const fetchLeaders = () => (dispatch) => {
+	dispatch(leadersLoading(true));
+
+	return fetch(baseURL + 'leaders')
+		.then(
+			(response) => {
+				if (response.ok) {
+					return response;
+				} else {
+					var errorStatus = new Error(
+						'Error ' + response.status + ': ' + response.statusText
+					);
+					errorStatus.response = response;
+					throw errorStatus;
+				}
+			},
+			(error) => {
+				var errorStatusMessage = new Error(error.message);
+				throw errorStatusMessage;
+			}
+		)
+		.then((response) => response.json())
+		.then((leaders) => dispatch(addLeaders(leaders)))
+		.catch((error) => dispatch(leadersFailed(error.message)));
+};
+
+export const leadersLoading = () => ({
+	type: ActionTypes.LEADERS_LOADING,
+});
+
+export const leadersFailed = (errorMessage) => ({
+	type: ActionTypes.LEADERS_FAILED,
+	payload: errorMessage,
+});
+
+export const addLeaders = (leaders) => ({
+	type: ActionTypes.ADD_LEADERS,
+	payload: leaders,
+});

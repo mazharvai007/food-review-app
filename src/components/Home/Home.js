@@ -24,7 +24,11 @@ function RenderCard({ item, isLoading, errorMessage }) {
 					exitTransform: 'scale(0.5) translateY(-50%)',
 				}}>
 				<Card>
-					<CardImg src={baseURL + item.image} alt={item.name} />
+					<CardImg
+						data-src={baseURL + item.image}
+						src={baseURL + item.imge}
+						alt={item.name}
+					/>
 					<CardBody>
 						<CardTitle>{item.name}</CardTitle>
 						{item.designation ? (
@@ -39,6 +43,7 @@ function RenderCard({ item, isLoading, errorMessage }) {
 }
 
 export default function Home(props) {
+	console.log(props.leader);
 	return (
 		<div className='container'>
 			<div className='row align-items-start'>

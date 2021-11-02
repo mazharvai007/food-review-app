@@ -6,9 +6,11 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
+    "@types/react": "^17.0.16",
     "bootstrap": "^4.5.3",
     "bootstrap-social": "^5.1.1",
     "cross-fetch": "^3.1.4",
+    "es-abstract": "^1.18.5",
     "font-awesome": "^4.7.0",
     "jshint": "^2.12.0",
     "prop-types": "^15.7.2",
@@ -20,7 +22,7 @@
     "react-redux-form": "^1.16.14",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3",
-    "react-transition-group": "^4.4.2",
+    "react-transition-group": "2.2.1",
     "reactstrap": "^8.6.0",
     "redux": "^4.0.5",
     "redux-logger": "^3.0.6",
@@ -46,5 +48,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/reactstrap": "^8.7.2"
   }
 }
